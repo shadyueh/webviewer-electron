@@ -1,20 +1,23 @@
 const { app, BrowserWindow } = require("electron");
+const config = require("./config");
 
 function createWindow() {
   // Cria uma janela de navegação.
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    titleBarStyle: "hidden",
+    alwaysOnTop: true,
     webPreferences: {
       nodeIntegration: true,
     },
   });
 
   // and load the index.html of the app.
-  win.loadFile("index.html");
+  win.loadURL(config.url);
 
   // Open the DevTools.
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
 }
 
 // This method will be called when Electron has finished
